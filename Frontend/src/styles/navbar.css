@@ -1,0 +1,72 @@
+/* ===========================
+   NAVBAR CUSTOM STYLES
+   =========================== */
+
+/* ----- MODO CLARO ----- */
+.navbar-custom {
+  background: linear-gradient(90deg, #05668d, #028090);
+  box-shadow: 0 3px 10px rgba(0,0,0,.25);
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: #ffffff;
+}
+
+/* Botón cerrar sesión (azul brillante en claro) */
+.navbar-custom .btn-logout {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 6px 14px;
+  transition: all .2s ease;
+  background-color: #0d6efd;   /* azul brillante */
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, .3);
+}
+.navbar-custom .btn-logout:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 6px 14px rgba(13, 110, 253, .45);
+  transform: translateY(-1px);
+}
+.navbar-custom .btn-logout:active {
+  background-color: #0a58ca;
+  transform: translateY(0);
+}
+
+/* ----- MODO OSCURO ----- */
+[data-bs-theme="dark"] .navbar-custom {
+  background: linear-gradient(90deg, #0f172a, #1e293b); /* azul gris oscuro */
+  box-shadow: 0 3px 10px rgba(0,0,0,.6);
+}
+
+[data-bs-theme="dark"] .navbar-custom .navbar-brand {
+  color: #e2e8f0; /* gris claro */
+}
+
+/* Botón cerrar sesión en modo oscuro (celeste brillante) */
+[data-bs-theme="dark"] .navbar-custom .btn-logout {
+  background-color: #38bdf8;   /* celeste brillante */
+  color: #0f172a;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, .35);
+}
+[data-bs-theme="dark"] .navbar-custom .btn-logout:hover {
+  background-color: #0ea5e9;
+  box-shadow: 0 6px 14px rgba(14, 165, 233, .5);
+}
+[data-bs-theme="dark"] .navbar-custom .btn-logout:active {
+  background-color: #0284c7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-custom .navbar-brand {
+    font-size: 1.2rem;
+  }
+  .navbar-custom .btn-logout {
+    padding: 5px 10px;
+    font-size: .9rem;
+  }
+}

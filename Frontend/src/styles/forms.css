@@ -1,0 +1,271 @@
+/* =========================================
+   FORMS.CSS — Teal/Mint con mejor contraste en modo claro
+   Soporta tema claro/oscuro con data-bs-theme en <html>
+   ========================================= */
+
+/* ===================== */
+/* Tema Claro (por defecto)
+/* ===================== */
+:root {
+  /* Paleta base (sin cambios drásticos) */
+  --lapis-lazuli: #05668d;     /* fondo panel oscuro */
+  --teal: #028090;             /* teal base */
+  --persian-green: #00a896;    /* verde persa */
+  --mint: #02c39a;             /* menta para gradiente */
+  --cream: #f0f3bd;            /* crema para gradiente */
+
+  /* Acentos / decorativos */
+  --buff: #0298a5;             /* teal para bordes/ghost */
+  --sage: #2bd3b7;             /* brillo del logo-dot */
+
+  /* Sombra y radios */
+  --radius: 14px;
+  --shadow: 0 14px 28px rgba(0,0,0,.28);
+  --subtle-shadow: 0 8px 20px rgba(0,0,0,.18);
+
+  /* Paneles */
+  --bg-deep: var(--lapis-lazuli);     /* fondo del lado del formulario */
+  --panel-light-1: var(--mint);       /* gradiente del panel opuesto */
+  --panel-light-2: var(--cream);
+
+  /* Tipografías generales */
+  --text-on-dark: #ffffff;            /* texto sobre --bg-deep */
+  --text-on-light: #0f172a;           /* texto sobre el gradiente claro */
+
+  /* --- FORM SPECÍFICO (clave para modo claro) --- */
+  --form-surface: rgba(0, 140, 255, 0.644);    /* tarjeta casi blanca */
+  --form-border: #c7d6dd;                   /* borde frío */
+  --form-fg: #0e2630;                       /* texto dentro del form */
+  --form-muted: #6b8794;
+
+  /* Inputs dentro del form */
+  --input-bg: #ffffff;
+  --input-border: #8fb0be;
+  --input-fg: #0e2630;
+  --input-placeholder: #7a94a1;
+
+  /* Botón primario (más punch pero en paleta) */
+  --btn-primary-bg: #0c4942;               /* teal brillante */
+  --btn-primary-hover: #0d9488;            /* hover */
+  --btn-primary-text: #ffffff;
+  --btn-shadow: 0 12px 24px rgba(20,184,166,.28);
+
+  /* Ghost/outline CTA */
+  --btn-secondary-outline: #ebebeb;
+
+  /* Foco y errores fríos */
+  --focus-ring: #22d3ee;
+  --error-bg: #183245;
+  --error-border: #61a5f8;
+  --error-text: #e6eef7;
+}
+
+/* ===================== */
+/* Tema Oscuro (como lo tenías, coherente)
+/* ===================== */
+[data-bs-theme="dark"] {
+  --bg-deep: #0f3344;
+  --panel-light-1: #0f766e;
+  --panel-light-2: #052e2b;
+
+  --text-on-dark: #e8eef4;
+  --text-on-light: #dbeafe;
+
+  --shadow: 0 14px 28px rgba(0,0,0,.35);
+  --subtle-shadow: 0 8px 20px rgba(0,0,0,.25);
+
+  /* Tarjeta más “glass” */
+  --form-surface: rgba(0,0,0,.28);
+  --form-border: rgba(255,255,255,.18);
+  --form-fg: var(--text-on-dark);
+  --form-muted: #a9b6bf;
+
+  /* Inputs oscuros */
+  --input-bg: rgba(255,255,255,.08);
+  --input-border: rgba(255,255,255,.28);
+  --input-fg: var(--text-on-dark);
+  --input-placeholder: #94a3b8;
+
+  /* Botón primario azulado/teal */
+  --btn-primary-bg: #0ea5e9;
+  --btn-primary-hover: #0b8cca;
+  --btn-primary-text: #ffffff;
+  --btn-shadow: 0 12px 24px rgba(14,165,233,.30);
+
+  --btn-secondary-outline: #38bdf8;
+
+  --focus-ring: #22d3ee;
+  --error-bg: #0f172a;
+  --error-border: #38bdf8;
+  --error-text: #e2e8f0;
+
+  /* Acentos del logo/ghost */
+  --buff: #38bdf8;
+  --sage: #22d3ee;
+}
+
+/* ===================== */
+/* Layout y componentes */
+/* ===================== */
+
+.imp-login{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  background: var(--bg-deep);
+  color: var(--text-on-dark);
+}
+
+/* Panel claro (gradiente) */
+.imp-right{
+  order: 1;
+  position: relative;
+  background: linear-gradient(135deg, var(--panel-light-1), var(--panel-light-2));
+  display: grid;
+  place-items: center;
+  padding: 48px;
+  box-shadow: inset 0 0 60px rgba(0,0,0,.06);
+}
+.imp-right-inner{
+  max-width: 520px;
+  color: var(--text-on-light);
+  text-shadow: 0 1px 0 rgba(255,255,255,.12);
+}
+.imp-right-inner h2{
+  font-size: 2rem;
+  margin-bottom: .75rem;
+  color: var(--text-on-light);
+}
+
+/* Panel oscuro (formulario) */
+.imp-left{
+  order: 2;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--bg-deep);
+  color: var(--text-on-dark);
+}
+
+/* Branding */
+.imp-brand{ display:flex; align-items:center; gap:16px; }
+.imp-logo-dot{
+  width: 56px; height: 56px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--buff), var(--sage));
+  box-shadow: 0 8px 22px rgba(0,0,0,.35);
+}
+.imp-title{ margin:0; font-size:1.8rem; letter-spacing:.5px; }
+.imp-subtitle{ margin:0; opacity:.92; }
+
+/* ---------- FORM ---------- */
+.imp-form{
+  width:100%;
+  max-width:420px;
+  background: var(--form-surface);
+  border: 1px solid var(--form-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow);
+  color: var(--form-fg);                 /* <- texto del form en claro/dark */
+}
+.imp-form-lead{
+  margin:0 0 14px;
+  font-weight:700;
+  color: var(--form-fg);
+}
+
+/* Inputs */
+.imp-label{
+  display:block;
+  font-size:.95rem;
+  margin:10px 0 6px;
+  color: var(--form-fg);
+}
+.imp-input{
+  width:100%;
+  background: var(--input-bg);
+  border: 1.6px solid var(--input-border);
+  color: var(--input-fg);
+  border-radius: 12px;
+  padding: 14px 14px;
+  outline: none;
+  box-shadow: var(--subtle-shadow);
+}
+.imp-input::placeholder{ color: var(--input-placeholder); }
+.imp-input:focus-visible{
+  border-color: var(--focus-ring);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--focus-ring), transparent 55%),
+    var(--subtle-shadow);
+}
+
+/* Error accesible (frío) */
+.imp-error{
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  color: var(--error-text);
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin: 12px 0 0;
+}
+
+/* Botón primario (teal brillante en claro) */
+.imp-btn{
+  width:100%; margin-top:16px; border:0; padding:14px 18px; border-radius:12px;
+  font-weight:800; letter-spacing:.4px; color: var(--btn-primary-text); cursor:pointer;
+  background: var(--btn-primary-bg);
+  box-shadow: var(--btn-shadow);
+  transition: transform .1s ease, box-shadow .2s ease, filter .18s ease, background .18s ease;
+}
+.imp-btn:hover{ filter: brightness(1.02); background: var(--btn-primary-hover); }
+.imp-btn:active{ transform: translateY(1px); }
+.imp-btn:focus-visible{
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Enlace secundario */
+.imp-link-btn{
+  margin-top:10px; background:transparent; border:0; color: var(--form-muted);
+  text-decoration: underline; cursor:pointer; padding: 8px 4px;
+}
+.imp-link-btn:focus-visible{
+  outline: 3px solid var(--focus-ring);
+  border-radius: 8px;
+}
+
+/* CTA inferior */
+.imp-cta{ display:flex; align-items:center; gap:12px; color: var(--text-on-dark); }
+.imp-ghost-btn{
+  border:2px solid var(--btn-secondary-outline);
+  color: var(--btn-secondary-outline);
+  padding:10px 16px; border-radius:12px; text-transform:uppercase; font-weight:800;
+  letter-spacing:.4px; text-decoration:none;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.imp-ghost-btn:hover{
+  background: color-mix(in srgb, var(--btn-secondary-outline), transparent 88%);
+}
+.imp-ghost-btn:focus-visible{ outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Skip link (teclado) */
+.skip-link{
+  position:absolute; left:-999px; top:0; padding:10px 14px; background:#000; color:#fff;
+}
+.skip-link:focus{ left:10px; z-index:9999; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* Responsive */
+@media (max-width: 980px){
+  .imp-login{ grid-template-columns: 1fr; }
+  .imp-right{ order: -1; min-height: 38vh; }
+  .imp-left{ padding: 28px 22px 44px; }
+  .imp-form{ max-width: 100%; }
+}

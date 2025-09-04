@@ -1,0 +1,93 @@
+/* ========== Base (modo claro por defecto) ========== */
+:root {
+    /* Paleta Bootstrap (afecta a TODOS los componentes nativos) */
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #111418;
+    --bs-emphasis-color: #000;
+    --bs-secondary-color: #6c757d;
+    --bs-secondary-bg: #f2f4f7;
+    --bs-tertiary-bg: #f8f9fa;
+  
+    --bs-border-color: #dee2e6;
+  
+    /* Puedes ajustar tu marca aquí */
+    --bs-primary: #0d6efd;
+    --bs-success: #198754;
+    --bs-danger:  #dc3545;
+    --bs-warning: #ffc107;
+    --bs-info:    #0dcaf0;
+  
+    /* Formularios */
+    --bs-form-control-bg: #ffffff;
+    --bs-form-control-color: #111418;
+    --bs-form-control-border-color: #ced4da;
+    --bs-form-control-placeholder-color: #6c757d;
+  
+    /* Tarjetas y paneles */
+    --bs-card-bg: #ffffff;
+    --bs-card-color: var(--bs-body-color);
+  
+    /* Enlaces */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: #0b5ed7;
+  
+    /* ===== Tus variables de aplicación (útiles en estilos inline/SCSS) ===== */
+    --app-surface: var(--bs-body-bg);
+    --app-surface-2: var(--bs-tertiary-bg);
+    --app-text: var(--bs-body-color);
+    --app-muted: var(--bs-secondary-color);
+    --app-elevated: var(--bs-card-bg);
+    --app-input-bg: var(--bs-form-control-bg);
+    --app-input-text: var(--bs-form-control-color);
+    --app-accent: var(--bs-primary);
+  }
+  
+  /* ========== Modo oscuro (se activa con data-bs-theme="dark") ========== */
+  [data-bs-theme="dark"] {
+    --bs-body-bg: #0f1115;
+    --bs-body-color: #e9ecef;
+    --bs-emphasis-color: #fff;
+    --bs-secondary-color: #a5acb4;
+    --bs-secondary-bg: #191c22;
+    --bs-tertiary-bg: #1d2129;
+  
+    --bs-border-color: #2a2f36;
+  
+    /* Colores de marca (puedes hacerlos un poco más vivos en dark) */
+    --bs-primary: #3b82f6;   /* azul un poco más brillante */
+    --bs-success: #28a745;
+    --bs-danger:  #ef4444;
+    --bs-warning: #f59e0b;
+    --bs-info:    #22d3ee;
+  
+    /* Formularios */
+    --bs-form-control-bg: #1c2128;
+    --bs-form-control-color: #e9ecef;
+    --bs-form-control-border-color: #2a2f36;
+    --bs-form-control-placeholder-color: #8b949e;
+  
+    /* Tarjetas y paneles */
+    --bs-card-bg: #171a20;
+    --bs-card-color: var(--bs-body-color);
+  
+    /* Enlaces */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: #60a5fa;
+  
+    /* Tus variables */
+    --app-surface: var(--bs-body-bg);
+    --app-surface-2: var(--bs-tertiary-bg);
+    --app-text: var(--bs-body-color);
+    --app-muted: var(--bs-secondary-color);
+    --app-elevated: var(--bs-card-bg);
+    --app-input-bg: var(--bs-form-control-bg);
+    --app-input-text: var(--bs-form-control-color);
+    --app-accent: var(--bs-primary);
+  }
+  
+  /* Pequeñas utilidades globales opcionales */
+  .app-surface      { background-color: var(--app-surface) !important; color: var(--app-text) !important; }
+  .app-surface-2    { background-color: var(--app-surface-2) !important; color: var(--app-text) !important; }
+  .app-elevated     { background-color: var(--app-elevated) !important; color: var(--app-text) !important; }
+  .text-muted-app   { color: var(--app-muted) !important; }
+  

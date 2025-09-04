@@ -1,0 +1,30 @@
+.footer-custom {
+    background-color: #024052;   /* más oscuro que el header teal */
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .footer-custom a {
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  .footer-custom a:hover {
+    color: #0d6efd; /* azul brillante en hover */
+  }
+  
+  /* ----- MODO OSCURO ----- */
+  [data-bs-theme="dark"] .footer-custom {
+    background-color: #0a0f1a;   /* más oscuro que el header dark */
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  [data-bs-theme="dark"] .footer-custom a {
+    color: #cbd5e1;
+  }
+  [data-bs-theme="dark"] .footer-custom a:hover {
+    color: #38bdf8; /* celeste brillante en hover */
+  }
+  

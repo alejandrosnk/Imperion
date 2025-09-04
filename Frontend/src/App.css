@@ -1,0 +1,142 @@
+:root {
+  --cambridge-blue: #8ab0abff;
+  --charcoal: #3e505bff;
+  --dark-slate-gray: #26413cff;
+  --eerie-black: #1a1d1aff;
+  --night: #03120eff;
+
+  /* Tokens semánticos */
+  --bg-deep: var(--night);              /* panel izquierdo */
+  --panel-light-1: var(--cambridge-blue);
+  --panel-light-2: var(--charcoal);
+
+  --text-on-dark: #ffffff;
+  --text-on-light: #fefefe;
+
+  --muted: #d0d0d0;
+  --card: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255,255,255,.1);
+  --input-border: rgba(255,255,255,.35);
+
+  --focus-ring: #8ab0ab; /* azul verdoso visible */
+  --error-bg: #7f1d1d;
+  --error-border: #fca5a5;
+  --error-text: #fff5f5;
+}
+
+
+/* Layout principal login */
+.imp-login{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;   /* izquierda > derecha o viceversa */
+  background: var(--bg-deep);
+  color: var(--text);
+}
+
+/* Panel izquierdo (form) */
+.imp-left{
+  order: 2; /* en desktop a la izquierda, en mobile se invierte */
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--bg-deep);
+}
+
+/* Panel derecho (texto + degradado) */
+.imp-right{
+  order: 1;
+  position: relative;
+  background: linear-gradient(135deg, var(--asparagus), var(--bittersweet-shimmer));
+  display: grid;
+  place-items: center;
+  padding: 48px;
+}
+.imp-right-inner{
+  max-width: 520px;
+  color: var(--parchment);
+}
+.imp-right-inner h2{
+  font-size: 2rem;
+  margin-bottom: .75rem;
+  color: #fff;
+}
+
+/* Branding */
+.imp-brand{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.imp-logo-dot{
+  width: 56px; height: 56px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--yellow-green), var(--bittersweet-shimmer));
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+.imp-title{ margin: 0; font-size: 1.8rem; letter-spacing: .5px; }
+.imp-subtitle{ margin: 0; opacity: .8; }
+
+/* Formulario */
+.imp-form{
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  padding: 28px;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow);
+}
+.imp-form-lead{ margin: 0 0 14px; font-weight: 600; color: var(--parchment); }
+.imp-label{ display:block; font-size:.9rem; margin:10px 0 6px; color: var(--parchment); }
+.imp-input{
+  width:100%; background: var(--input-bg); border:1px solid var(--input-border);
+  color: var(--text); border-radius: 10px; padding:12px 14px; outline:none;
+}
+.imp-input:focus{
+  border-color: var(--yellow-green);
+  box-shadow: 0 0 0 3px rgba(167,201,87,.25);
+}
+.imp-error{
+  background: rgba(188,71,73,.15);
+  border: 1px solid rgba(188,71,73,.5);
+  color: #ffe5e6;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 12px 0 0;
+}
+
+/* Botones */
+.imp-btn{
+  width:100%; margin-top:16px; border:0; padding:12px 16px; border-radius:12px;
+  font-weight:700; letter-spacing:.4px; color:#fff; cursor:pointer;
+  background-image: linear-gradient(90deg, var(--yellow-green), var(--bittersweet-shimmer));
+  box-shadow: 0 10px 24px rgba(188,71,73,.35);
+  transition: transform .1s ease, box-shadow .2s ease, filter .2s ease;
+}
+.imp-btn:hover{ filter: brightness(1.05); box-shadow: 0 14px 28px rgba(188,71,73,.45); }
+.imp-btn:active{ transform: translateY(1px); }
+
+.imp-link-btn{
+  margin-top:10px; background:transparent; border:0; color: var(--yellow-green);
+  text-decoration: underline; cursor:pointer;
+}
+
+/* CTA inferior */
+.imp-cta{ display:flex; align-items:center; gap:12px; color: var(--muted); }
+.imp-ghost-btn{
+  border:2px solid var(--bittersweet-shimmer); color: var(--bittersweet-shimmer);
+  padding:8px 16px; border-radius:12px; text-transform:uppercase; font-weight:700;
+  letter-spacing:.4px; text-decoration:none;
+}
+.imp-ghost-btn:hover{ background: rgba(188,71,73,.12); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .imp-login{ grid-template-columns: 1fr; }
+  .imp-right{ order: -1; min-height: 38vh; }
+  .imp-left{ padding: 28px 22px 44px; }
+  .imp-form{ max-width: 100%; }
+}
