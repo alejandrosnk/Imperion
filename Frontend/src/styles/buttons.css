@@ -1,0 +1,39 @@
+/* Botón circular con icono */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background-color: #024052; /* teal oscuro base */
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Hover */
+.btn-icon:hover {
+  background-color: #0d6efd; /* azul brillante de la paleta */
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de icono en tema oscuro */
+[data-bs-theme="dark"] .btn-icon {
+  background-color: #1e293b;   /* gris oscuro base */
+  color: #38bdf8;              /* celeste brillante */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover con alto contraste + sombra blanca */
+[data-bs-theme="dark"] .btn-icon:hover {
+  background-color: #38bdf8;   /* celeste sólido */
+  color: #0f172a;              /* contraste fuerte (casi negro) */
+  transform: scale(1.1);       /* ligera animación */
+}
+
+

@@ -34,27 +34,12 @@ async function login(req, res) {
     const ok = await bcrypt.compare(password, user.password);
     if (!ok) return res.status(400).json({ message: 'Contraseña incorrecta' });
 
-    const expiresAt = new Date(Date.now() + TOKEN_TTL_MS);
     const token = jwt.sign(tokenPayload(user), JWT_SECRET, { expiresIn: '1h' });
-
-    // guarda la sesión
-    await pool.query(
-      'INSERT INTO sessions (user_id, token, expires_at) VALUES ($1,$2,$3)',
-      [user.id, token, expiresAt]
-    );
-
-    // Cookie httpOnly 
-    res.cookie('session_token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', 
-      sameSite: 'lax',
-      maxAge: TOKEN_TTL_MS,
-      path: '/',
-    });
-
+    const expiresAt = new Date(Date.now() + TOKEN_TTL_MS);
     res.json({
       user: { id: user.id, email: user.email, role: user.role, fullname: user.fullname },
-      expiresAt,
+      token,
+      expiresAt
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -62,25 +47,22 @@ async function login(req, res) {
 }
 
 async function me(req, res) {
+  const header = req.headers['authorization'];
+  const token = header?.startsWith('Bearer ') ? header.split(' ')[1] : null;
+  if (!token) return res.status(401).json({ message: 'No autenticado' });
+
   try {
-    const u = await pool.query('SELECT id,email,role,fullname FROM users WHERE id=$1', [req.user.id]);
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const u = await pool.query('SELECT id,email,role,fullname FROM users WHERE id=$1', [decoded.id]);
     if (!u.rows[0]) return res.status(401).json({ message: 'Usuario no encontrado' });
     res.json({ user: u.rows[0] });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch {
+    return res.status(401).json({ message: 'Token inválido o expirado' });
   }
 }
 
-async function logout(req, res) {
-  try {
-    if (req.token) {
-      await pool.query('DELETE FROM sessions WHERE token=$1', [req.token]);
-    }
-    res.clearCookie('session_token', { path: '/' });
-    res.json({ message: 'Logout exitoso' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+async function logout(_req, res) {
+  res.json({ message: 'Logout OK' });
 }
 
 module.exports = { register, login, me, logout };

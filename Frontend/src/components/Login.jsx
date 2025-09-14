@@ -27,12 +27,9 @@ export default function Login() {
         {/* Panel derecho con gradiente mint→cream */}
         <aside className="imp-right" aria-label="Company information">
           <div className="imp-right-inner">
-            <h2>We are more than just a company</h2>
+            <h2>We are more than food, we create moments</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            Our mission is to delight your senses with innovative recipes, authentic flavors, and a service that makes every visit feel special. Taste the difference in every bite.
             </p>
           </div>
         </aside>
@@ -43,7 +40,7 @@ export default function Login() {
             <div className="imp-logo-dot" aria-hidden="true" />
             <div>
               <h1 id="brandTitle" className="imp-title">Imperion</h1>
-              <p className="imp-subtitle">We are The Lotus Team</p>
+              <p className="imp-subtitle">Developed by alejandrosnk</p>
             </div>
             <ThemeSwitch />
           </div>

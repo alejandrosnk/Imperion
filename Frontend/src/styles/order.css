@@ -1,0 +1,76 @@
+.order-page {
+  padding: 20px;
+}
+
+.order-page header {
+  margin-bottom: 20px;
+}
+
+.order-items ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-items li {
+  background: #f1f5f9;
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.menu-section {
+  margin-top: 20px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.menu-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  background: #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.menu-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.tag.dish {
+  background: #16a34a;
+  color: white;
+}
+.tag.drink {
+  background: #0284c7;
+  color: white;
+}
+
+.close-btn {
+  margin-top: 20px;
+  width: 100%;
+  background: #dc2626;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.close-btn:hover {
+  background: #b91c1c;
+}

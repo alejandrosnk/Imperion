@@ -2,25 +2,24 @@ import { useTheme } from "../context/ThemeContext";
 
 function ThemeSwitch() {
   const ctx = useTheme();
-
-  // Si por alguna razón no hay provider, evita crashear el árbol
   if (!ctx) return null;
 
   const { theme, toggleTheme } = ctx;
 
   return (
-    <div className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        id="themeSwitch"
-        checked={theme === "dark"}
-        onChange={toggleTheme}
-      />
-      <label className="form-check-label ms-2" htmlFor="themeSwitch">
-        {theme === "dark" ? "Oscuro 🌙" : "Claro ☀️"}
-      </label>
-    </div>
+    <button
+      className="btn btn-sm d-flex align-items-center justify-content-center"
+      onClick={toggleTheme}
+      style={{ border: "none", background: "transparent", fontSize: "1.5rem" }}
+      aria-label="Cambiar tema"
+    >
+      {theme === "dark" ? (
+        <i className="fas fa-sun text-warning"></i>
+      ) : (
+        <i className="fas fa-moon text-light"></i>
+      )}
+
+    </button>
   );
 }
 

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { api } from "../api";           
+import { useNavigate, Link } from "react-router-dom";           
 import { useAuth } from "../context/AuthContext";
+import ThemeSwitch from "./ThemeSwitch";
+import { api } from "../api";
 import "../styles/forms.css";
 
 export default function Register() {
@@ -11,6 +12,7 @@ export default function Register() {
     fullName: "",
     email: "",
     password: "",
+    role: "WAITER", // por defecto WAITER
   });
   const [err, setErr] = useState("");
 
@@ -18,7 +20,7 @@ export default function Register() {
     e.preventDefault();
     setErr("");
     try {
-      // 1) Registrar
+      // 1) Registrar con el rol
       await api.post("/auth/register", form);
       // 2) Loguear de una vez para persistir sesión
       await login(form.email, form.password);
@@ -32,8 +34,8 @@ export default function Register() {
     <main className="imp-login" role="main">
       <aside className="imp-right">
         <div className="imp-right-inner">
-          <h2>Create your account</h2>
-          <p>Join Imperion and start managing your restaurant today.</p>
+          <h2>Where tradition meets innovation</h2>
+          <p>We bring together the best of traditional recipes and modern cuisine to offer you dishes full of flavor, quality, and freshness always served with a smile.</p>
         </div>
       </aside>
 
@@ -42,7 +44,8 @@ export default function Register() {
           <div className="imp-logo-dot" aria-hidden="true" />
           <div>
             <h1 className="imp-title">Imperion</h1>
-            <p className="imp-subtitle">We are The Lotus Team</p>
+            <ThemeSwitch />
+            <p className="imp-subtitle">Developed by alejandrosnk</p>
           </div>
         </div>
 
@@ -82,6 +85,34 @@ export default function Register() {
             placeholder="••••••••"
             autoComplete="new-password"
           />
+
+          {/* Campo de Rol */}
+          <fieldset className="imp-fieldset">
+            <legend className="imp-label">Role</legend>
+            <div className="imp-radio-group">
+              <label className="imp-radio">
+                <input
+                  type="radio"
+                  name="role"
+                  value="ADMIN"
+                  checked={form.role === "ADMIN"}
+                  onChange={(e) => setForm({ ...form, role: e.target.value })}
+                />
+                <span>Admin</span>
+              </label>
+
+              <label className="imp-radio">
+                <input
+                  type="radio"
+                  name="role"
+                  value="WAITER"
+                  checked={form.role === "WAITER"}
+                  onChange={(e) => setForm({ ...form, role: e.target.value })}
+                />
+                <span>Waiter</span>
+              </label>
+            </div>
+          </fieldset>
 
           {err && (
             <div id="regErr" className="imp-error" role="alert" aria-live="assertive">
