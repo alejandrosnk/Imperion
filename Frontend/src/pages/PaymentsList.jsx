@@ -14,7 +14,7 @@ export default function PaymentsList() {
     async function load() {
       try {
         const data = await getPayments(token);
-        setPayments(data);
+        setPayments(data.rows || []); // ✅ usar rows del backend
       } catch (err) {
         setError(err.response?.data?.message || "Error cargando pagos");
       }
@@ -26,10 +26,10 @@ export default function PaymentsList() {
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
       <div className="container my-3">
-          <Link to="/dashboard" className="btn-icon" title="Volver al dashboard">
-            <i className="fa-solid fa-right-to-bracket fa-lg"></i>
-          </Link>
-        </div>
+        <Link to="/dashboard" className="btn-icon" title="Volver al dashboard">
+          <i className="fa-solid fa-right-to-bracket fa-lg"></i>
+        </Link>
+      </div>
       <main className="container my-4 flex-grow-1">
         <h2 className="mb-3">Pagos</h2>
 
@@ -50,27 +50,29 @@ export default function PaymentsList() {
               payments.map((p) => (
                 <tr key={p.id}>
                   <td>{p.order_id}</td>
-                  <td>₡{p.amount.toFixed(2)}</td>
+                  <td>₡{parseFloat(p.amount).toFixed(2)}</td>
                   <td>
                     <span
-                        className={`badge ${
+                      className={`badge ${
                         p.method === "CASH"
-                            ? "bg-success"
-                            : p.method === "CARD"
-                            ? "bg-primary"
-                            : "bg-info"
-                        }`}
+                          ? "bg-success"
+                          : p.method === "CARD"
+                          ? "bg-primary"
+                          : "bg-info"
+                      }`}
                     >
-                        {p.method}
+                      {p.method}
                     </span>
                   </td>
-                  <td>{p.paid_by || "-"}</td>
+                  <td>{p.paid_by_name || "-"}</td>
                   <td>{new Date(p.created_at).toLocaleString()}</td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="text-center">Sin pagos registrados</td>
+                <td colSpan="5" className="text-center">
+                  Sin pagos registrados
+                </td>
               </tr>
             )}
           </tbody>
